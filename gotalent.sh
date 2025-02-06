@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # generate for github cli
-cat > ~/0_script_github.sh <<EOF
+cat > ~/0_script_github.sh <<'EOF'
 (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
 	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
         && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
@@ -11,6 +11,7 @@ cat > ~/0_script_github.sh <<EOF
 	&& sudo apt update \
 	&& sudo apt install gh -y
 EOF
+
 
 chmod +x ~/0_script_github.sh
 
