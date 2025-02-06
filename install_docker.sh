@@ -15,13 +15,12 @@ sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-sudo docker run hello-world
+echo 'sudo docker run hello-world'
 
 # post instsallation
-sudo groupadd docker
+echo 'sudo groupadd docker'
+echo 'sudo usermod -aG docker $USER'
 
-sudo usermod -aG docker $USER
-
-# logout and login
-newgrp docker
+echo 'logout and login'
+echo 'newgrp docker'
 
