@@ -12,6 +12,9 @@ docker build -t chihjenhuang/gotalent:v1 .
 
 echo 'to run the image...'
 echo 'docker run --rm -p 8080:80 -p 8025:8025 chihjenhuang/gotalent:v1'
+echo 'docker run --rm -p 8080:80  -p 8443:443 -p 8025:8025 chihjenhuang/gotalent:v1'
+echo 'HTTPS = https://{ip}:8443'
+
 EOF
 
 chmod +x ~/1_script_gotalent.sh
