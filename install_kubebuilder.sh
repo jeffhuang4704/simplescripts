@@ -3,18 +3,18 @@ curl -L -o kubebuilder "https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go 
 chmod +x kubebuilder && sudo mv kubebuilder /usr/local/bin/
 
 # create a project
-mkdir -p ~/projects/guestbook
-cd ~/projects/guestbook
-kubebuilder init --domain my.domain --repo my.domain/guestbook
+# mkdir -p ~/projects/guestbook
+# cd ~/projects/guestbook
+# kubebuilder init --domain my.domain --repo my.domain/guestbook
 
 
 # create API
-kubebuilder create api --group webapp --version v1 --kind Guestbook
+# kubebuilder create api --group webapp --version v1 --kind Guestbook
 
-make manifests
+# make manifests
 
 # install CRD to cluster
-make install
+# make install
 
 # run
-make run
+# make run
