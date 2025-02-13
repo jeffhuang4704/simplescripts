@@ -35,3 +35,6 @@ echo '🔴 go back to WSL to do port-forwarding'
 echo "then open your browser and go to https://localhost:$NODE_PORT"
 echo ''
 echo "labctl port-forward -m cplane-01 {PLAYGROUND_ID} -L $NODE_PORT:$NODE_PORT"
+echo ''
+echo '🟢 to uninstall NeuVector, run the following command:'
+echo 'helm uninstall neuvector -n neuvector'
