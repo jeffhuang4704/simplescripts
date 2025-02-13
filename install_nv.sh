@@ -1,3 +1,17 @@
+
+# Get the list of nodes and their status
+nodes=$(kubectl get nodes --no-headers | awk '{print $2}')
+
+# Check if any node is not in the "Ready" state
+for status in $nodes; do
+  if [[ "$status" != "Ready" ]]; then
+    echo "Not all nodes are ready. Found status: $status"
+    exit 1  # Exit with a non-zero code to indicate failure
+  fi
+done
+
+echo "All nodes are ready. Start installing NeuVector"
+
 helm repo add neuvector https://neuvector.github.io/neuvector-helm/
 helm search repo neuvector/core
 
@@ -17,9 +31,10 @@ kubectl patch svc neuvector-service-webui -n neuvector --type='merge' -p '{"spec
 NODE_PORT=$(kubectl get svc neuvector-service-webui -n neuvector -o jsonpath='{.spec.ports[0].nodePort}')
   
 # Get playground id
-PLAYGROUND_ID=$(labctl playground list | awk 'NR==2 {print $1}')
+
 
 echo '🔴 go back to WSL to do port-forwarding'
 echo "then open your browser and go to https://localhost:$NODE_PORT"
 echo ''
-echo "labctl port-forward -m cplane-01 $PLAYGROUND_ID -L $NODE_PORT:$NODE_PORT"
+echo "PLAYGROUND_ID=$(labctl playground list | awk 'NR==2 {print $1}')"
+echo 'labctl port-forward -m cplane-01 $PLAYGROUND_ID -L $NODE_PORT:$NODE_PORT'
