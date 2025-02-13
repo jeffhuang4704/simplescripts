@@ -36,5 +36,5 @@ NODE_PORT=$(kubectl get svc neuvector-service-webui -n neuvector -o jsonpath='{.
 echo '🔴 go back to WSL to do port-forwarding'
 echo "then open your browser and go to https://localhost:$NODE_PORT"
 echo ''
-echo "PLAYGROUND_ID=$(labctl playground list | awk 'NR==2 {print $1}')"
+echo 'PLAYGROUND_ID=$(labctl playground list | awk "NR==2 {print $1}")'
 echo 'labctl port-forward -m cplane-01 $PLAYGROUND_ID -L $NODE_PORT:$NODE_PORT'
