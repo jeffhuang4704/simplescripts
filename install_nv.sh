@@ -19,7 +19,8 @@ kubectl create namespace neuvector
 
 helm install neuvector --namespace neuvector --create-namespace \
   --set controller.env[0].name="CTRL_PATH_DEBUG" \
-  --set controller.env[0].value='"1"' \
+  --set controller.env[0].value="true" \
+  --set controller.replicas=1  \
   neuvector/core
 
 echo 'wait for a while...'
