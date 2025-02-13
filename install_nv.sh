@@ -29,10 +29,8 @@ kubectl patch svc neuvector-service-webui -n neuvector --type='merge' -p '{"spec
 # Get the NodePort number of the service
 NODE_PORT=$(kubectl get svc neuvector-service-webui -n neuvector -o jsonpath='{.spec.ports[0].nodePort}')
   
-# Get playground id
-
 echo '🔴 go back to WSL to do port-forwarding'
-echo "then open your browser and go to 👉👉👉  https://localhost:$NODE_PORT"
+echo "then open your browser and go to 👉  https://localhost:$NODE_PORT"
 echo ''
 echo "labctl port-forward -m cplane-01 {PLAYGROUND_ID} -L $NODE_PORT:$NODE_PORT"
 echo ''
