@@ -11,6 +11,11 @@ kubectl patch svc grafana -n monitoring -p '{"spec": {"type": "NodePort"}}'
 # get svc port
 NODE_PORT=$(kubectl get svc grafana -n monitoring -o jsonpath='{.spec.ports[0].nodePort}')
 
+# get gra
+echo "🔴 Grafana admin password:"
+kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+echo ""
+
 # Do port-forward on WSL
-echo "🔴 do port-forward on WSL"
+echo "🔴 Do port-forward on WSL"
 echo "labctl port-forward -m cplane-01 {playground_id} -L $NODE_PORT:$NODE_PORT"
