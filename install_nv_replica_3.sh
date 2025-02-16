@@ -20,6 +20,8 @@ kubectl create namespace neuvector
 helm install neuvector --namespace neuvector --create-namespace \
   --set controller.env[0].name="CTRL_PATH_DEBUG" \
   --set-string controller.env[0].value="1" \
+  --set enforcer.env[0].name="ENFORCER_SKIP_NV_PROTECT" \
+  --set-string enforcer.env[0].value="1" \
   neuvector/core
 
 echo 'wait for a while...'
